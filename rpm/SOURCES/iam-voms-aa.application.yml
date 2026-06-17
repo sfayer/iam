@@ -1,0 +1,37 @@
+server:
+  address: 0.0.0.0
+  port: 8080
+  use-forward-headers: true
+  max-http-header-size: 16000
+
+spring:
+  main:
+    banner-mode: "off"
+
+  jpa:
+    open-in-view: false
+
+  flyway:
+    enabled: false
+
+  datasource:
+    url: jdbc:mysql://db:3306/iam?useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
+    username: iam
+    password: pwd
+    max-active: 50
+    minimum-idle: 8
+    validation-query: SELECT 1
+
+voms:
+  tls:
+    certificate-path: /certs/hostcert.pem
+    private-key-path: /certs/hostkey.pem
+    trust-anchors-dir: /etc/grid-security/certificates
+    trust-anchors-refresh-interval-secs: 14400
+  aa:
+    host: 0.0.0.0
+    port: 8080
+    vo-name: test
+    optional-group-label: wlcg.optional-group
+    voms-role-label: voms.role
+    use-legacy-fqan-encoding: false
